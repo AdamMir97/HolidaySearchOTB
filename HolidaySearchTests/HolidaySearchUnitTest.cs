@@ -102,20 +102,22 @@ namespace HolidaySearchTests
         public void FlightDestinationMatchesWithHotelAirport()
         {
             //Arrange- use Cyprus for the sake of argument
+            var flightDate = new DateTime(2025, 09, 01);
+            var departingFrom = "MAN";
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DestinationName = "PFO" }
+                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate  }
             };
             var hotels = new List<Hotel>
             {
-                new Hotel { Name = "TestHotel1", LocalAirports = new[] {"PFO", "LCA"}, LengthOfStay = 1 },
-                new Hotel { Name = "TestHotel2", LocalAirports = new[] { "LCA"}, LengthOfStay = 1 }
+                new Hotel { Name = "TestHotel1", LocalAirports = new[] {"PFO", "LCA"}, ArrivalDate = flightDate, LengthOfStay = 1 },
+                new Hotel { Name = "TestHotel2", LocalAirports = new[] { "LCA"}, ArrivalDate = flightDate, LengthOfStay = 1 }
             };
 
             var service = new HolidayMatchingService();
 
             //Act
-            var matches = service.Match(flights, hotels, 1).ToList();
+            var matches = service.Match(flights, hotels, departingFrom,  flightDate, 1).ToList();
             //Assert
             Assert.Equal(1, matches[0].Item1.Id);
             Assert.Equal("TestHotel1", matches[0].Item2.Name);
@@ -125,20 +127,22 @@ namespace HolidaySearchTests
         public void FlightDestinationNoMatchesWithHotelAirport_ReturnsEmpty()
         {
             //Arrange
+            var flightDate = new DateTime(2025, 09, 01);
+            var departingFrom = "MAN";
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DestinationName = "AYT" }
+                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "AYT", DepartureDate = flightDate  }
             };
             var hotels = new List<Hotel>
             {
-                new Hotel { Name = "TestHotel1", LocalAirports = new[] {"PFO", "LCA"}, LengthOfStay = 1 },
-                new Hotel { Name = "TestHotel2", LocalAirports = new[] { "LCA"}, LengthOfStay = 1 }
+                new Hotel { Name = "TestHotel1", LocalAirports = new[] {"PFO", "LCA"}, ArrivalDate = flightDate, LengthOfStay = 1 },
+                new Hotel { Name = "TestHotel2", LocalAirports = new[] { "LCA"}, ArrivalDate = flightDate, LengthOfStay = 1 }
             };
 
             var service = new HolidayMatchingService();
 
             //Act
-            var matches = service.Match(flights, hotels, 1).ToList();
+            var matches = service.Match(flights, hotels, departingFrom, flightDate, 1).ToList();
             //Assert
             Assert.Empty(matches);
         }
@@ -148,9 +152,10 @@ namespace HolidaySearchTests
         {
             //Arrange
             var flightDate = new DateTime(2025, 09, 01);
+            var departingFrom = "MAN";
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DestinationName = "PFO", DepartureDate = flightDate }
+                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate }
             };
             var hotels = new List<Hotel>
             {
@@ -162,7 +167,7 @@ namespace HolidaySearchTests
             var service = new HolidayMatchingService();
 
             //Act
-            var matches = service.Match(flights, hotels, 1).ToList();
+            var matches = service.Match(flights, hotels, departingFrom, flightDate, 1).ToList();
             //Assert that the departure date is the same as arrival date
             Assert.Equal(1, matches[0].Item1.Id);
             Assert.Equal("TestHotel3", matches[0].Item2.Name);
@@ -173,9 +178,10 @@ namespace HolidaySearchTests
         {
             //Arrange
             var flightDate = new DateTime(2025, 09, 01);
+            var departingFrom = "MAN";
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DestinationName = "PFO", DepartureDate = flightDate }
+                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate }
             };
             var hotels = new List<Hotel>
             {
@@ -185,7 +191,7 @@ namespace HolidaySearchTests
             var service = new HolidayMatchingService();
 
             //Act
-            var matches = service.Match(flights, hotels , 1).ToList();
+            var matches = service.Match(flights, hotels, departingFrom, flightDate, 1).ToList();
             //Assert
             Assert.Empty(matches);
         }
@@ -196,9 +202,10 @@ namespace HolidaySearchTests
             //Arrange
             int duration = 10;
             var flightDate = new DateTime(2025, 09, 01);
+            var departingFrom = "MAN";
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DestinationName = "PFO", DepartureDate = flightDate }
+                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate }
             };
             var hotels = new List<Hotel>
             {
@@ -210,7 +217,7 @@ namespace HolidaySearchTests
             var service = new HolidayMatchingService();
 
             //Act
-            var matches = service.Match(flights, hotels, duration).ToList();
+            var matches = service.Match(flights, hotels, departingFrom, flightDate, duration).ToList();
             //Assert that the correct package is chosen according to the duration
             Assert.Equal(1, matches[0].Item1.Id);
             Assert.Equal("TestHotel3", matches[0].Item2.Name);
@@ -222,9 +229,10 @@ namespace HolidaySearchTests
             //Arrange
             int duration = 10;
             var flightDate = new DateTime(2025, 09, 01);
+            var departingFrom = "MAN";
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DestinationName = "PFO", DepartureDate = flightDate }
+                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate }
             };
             var hotels = new List<Hotel>
             {
@@ -234,7 +242,7 @@ namespace HolidaySearchTests
             var service = new HolidayMatchingService();
 
             //Act
-            var matches = service.Match(flights, hotels, duration).ToList();
+            var matches = service.Match(flights, hotels, departingFrom, flightDate, duration).ToList();
             //Assert
             Assert.Empty(matches);
         }
@@ -246,10 +254,11 @@ namespace HolidaySearchTests
             //Arrange
             int duration = 10;
             var flightDate = new DateTime(2025, 09, 01);
+            var departingFrom = "MAN";
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DestinationName = "PFO", DepartureDate = flightDate, Cost = 150 },
-                new Flight { Id = 2, DestinationName = "PFO", DepartureDate = flightDate, Cost = 100 }
+                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate, Cost = 150 },
+                new Flight { Id = 2, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate, Cost = 100 }
             };
             var hotels = new List<Hotel>
             {
@@ -261,10 +270,35 @@ namespace HolidaySearchTests
             var service = new HolidayMatchingService();
 
             //Act
-            var matches = service.Match(flights, hotels, duration).ToList();
+            var matches = service.Match(flights, hotels, departingFrom, flightDate, duration).ToList();
             //Assert that the correct package is chosen according to the duration and price
             Assert.Equal(2, matches[0].Item1.Id);
             Assert.Equal("TestHotel3", matches[0].Item2.Name);
         }
+
+        //integration testing using given test cases
+        [Fact]
+        public void Customer1()
+        {
+            //Arrange
+            var flightrepo = new JsonFlightRepository("JSONdata/flightdata.json");
+            var flights = flightrepo.GetAll();
+
+            var hotelrepo = new JsonHotelRepository("JSONdata/hoteldata.json");
+            var hotels = hotelrepo.GetAll();
+
+            var departingFrom = "MAN";
+            var flightDate = new DateTime(2023, 07, 01);
+            var duration = 7;
+
+            var service = new HolidayMatchingService();
+
+            //Act
+            var matches = service.Match(flights, hotels, departingFrom, flightDate, duration).ToList();
+            //Assert
+            Assert.Equal(2, matches[0].Item1.Id);
+            Assert.Equal(9, matches[0].Item2.Id);
+        }
+
     }
 }
