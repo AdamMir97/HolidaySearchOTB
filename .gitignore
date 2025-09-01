@@ -3,3 +3,17 @@
 ################################################################################
 
 /.vs/OTBHolidaySearch/DesignTimeBuild
+/.vs/OTBHolidaySearch/v17/TestStore/0
+/.vs/OTBHolidaySearch/v17/.suo
+/.vs/OTBHolidaySearch/v17/DocumentLayout.backup.json
+/.vs/OTBHolidaySearch/v17/DocumentLayout.json
+/.vs/OTBHolidaySearch/FileContentIndex/17e5c511-a45b-457b-93e9-4399fa1e428b.vsidx
+/.vs/OTBHolidaySearch/FileContentIndex/24a61f23-538b-44e8-a943-af245fb3ce25.vsidx
+*.vsidx
+/.vs/OTBHolidaySearch/FileContentIndex/5e1e4eb2-9b1d-4209-a191-4013ef577161.vsidx
+/.vs/OTBHolidaySearch/FileContentIndex/f6084e3b-e0c1-4c29-bd65-cf6424ad4564.vsidx
+/HolidaySearchTests/obj/Debug/net8.0/HolidaySearchTests.AssemblyInfo.cs
+/HolidaySearchTests/obj/Debug/net8.0/HolidaySearchTests.AssemblyInfoInputs.cache
+/HolidaySearchTests/obj/Debug/net8.0/HolidaySearchTests.csproj.AssemblyReference.cache
+/OTBHolidaySearch/obj/Debug/net8.0/OTBHolidaySearch.AssemblyInfo.cs
+/OTBHolidaySearch/obj/Debug/net8.0/OTBHolidaySearch.AssemblyInfoInputs.cache
