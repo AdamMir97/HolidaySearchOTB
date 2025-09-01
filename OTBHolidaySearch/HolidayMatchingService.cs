@@ -9,16 +9,16 @@ namespace OTBHolidaySearch
 {
     public interface IMatchingService
     {
-        IEnumerable<(Flight, Hotel)> Match(IEnumerable<Flight> flights, IEnumerable<Hotel> hotels, string departingFrom, DateTime departureDate, int duration);
+        IEnumerable<(Flight, Hotel)> Match(IEnumerable<Flight> flights, IEnumerable<Hotel> hotels, string[] departingFrom, DateTime departureDate, int duration);
     }
     public class HolidayMatchingService : IMatchingService
     {
-        public IEnumerable<(Flight, Hotel)> Match(IEnumerable<Flight> flights, IEnumerable<Hotel> hotels, string departingFrom, DateTime departureDate, int duration)
+        public IEnumerable<(Flight, Hotel)> Match(IEnumerable<Flight> flights, IEnumerable<Hotel> hotels, string[] departingFrom, DateTime departureDate, int duration)
         {
             return from flight in flights
+                   where departingFrom.Contains(flight.DepartingFrom)
                    from hotel in hotels
-                   where departingFrom == flight.DepartingFrom &&
-                         hotel.LocalAirports.Contains(flight.DestinationName) &&
+                   where hotel.LocalAirports.Contains(flight.DestinationName) &&
                          departureDate == flight.DepartureDate.Date &&
                          hotel.ArrivalDate == flight.DepartureDate.Date &&
                          hotel.LengthOfStay == duration

@@ -103,10 +103,10 @@ namespace HolidaySearchTests
         {
             //Arrange- use Cyprus for the sake of argument
             var flightDate = new DateTime(2025, 09, 01);
-            var departingFrom = "MAN";
+            string[] departingFrom = { "MAN" };
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate  }
+                new Flight { Id = 1, DepartingFrom = "MAN", DestinationName = "PFO", DepartureDate = flightDate  }
             };
             var hotels = new List<Hotel>
             {
@@ -128,10 +128,10 @@ namespace HolidaySearchTests
         {
             //Arrange
             var flightDate = new DateTime(2025, 09, 01);
-            var departingFrom = "MAN";
+            string[] departingFrom = { "MAN" };
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "AYT", DepartureDate = flightDate  }
+                new Flight { Id = 1, DepartingFrom = "MAN", DestinationName = "AYT", DepartureDate = flightDate  }
             };
             var hotels = new List<Hotel>
             {
@@ -152,10 +152,10 @@ namespace HolidaySearchTests
         {
             //Arrange
             var flightDate = new DateTime(2025, 09, 01);
-            var departingFrom = "MAN";
+            string[] departingFrom = { "MAN" };
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate }
+                new Flight { Id = 1, DepartingFrom = "MAN", DestinationName = "PFO", DepartureDate = flightDate }
             };
             var hotels = new List<Hotel>
             {
@@ -178,10 +178,10 @@ namespace HolidaySearchTests
         {
             //Arrange
             var flightDate = new DateTime(2025, 09, 01);
-            var departingFrom = "MAN";
+            string[] departingFrom = { "MAN" };
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate }
+                new Flight { Id = 1, DepartingFrom = "MAN", DestinationName = "PFO", DepartureDate = flightDate }
             };
             var hotels = new List<Hotel>
             {
@@ -202,10 +202,10 @@ namespace HolidaySearchTests
             //Arrange
             int duration = 10;
             var flightDate = new DateTime(2025, 09, 01);
-            var departingFrom = "MAN";
+            string[] departingFrom = { "MAN" };
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate }
+                new Flight { Id = 1, DepartingFrom = "MAN", DestinationName = "PFO", DepartureDate = flightDate }
             };
             var hotels = new List<Hotel>
             {
@@ -229,10 +229,10 @@ namespace HolidaySearchTests
             //Arrange
             int duration = 10;
             var flightDate = new DateTime(2025, 09, 01);
-            var departingFrom = "MAN";
+            string[] departingFrom = { "MAN" };
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate }
+                new Flight { Id = 1, DepartingFrom = "MAN", DestinationName = "PFO", DepartureDate = flightDate }
             };
             var hotels = new List<Hotel>
             {
@@ -254,11 +254,11 @@ namespace HolidaySearchTests
             //Arrange
             int duration = 10;
             var flightDate = new DateTime(2025, 09, 01);
-            var departingFrom = "MAN";
+            string[] departingFrom = { "MAN" };
             var flights = new List<Flight>
             {
-                new Flight { Id = 1, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate, Cost = 150 },
-                new Flight { Id = 2, DepartingFrom = departingFrom, DestinationName = "PFO", DepartureDate = flightDate, Cost = 100 }
+                new Flight { Id = 1, DepartingFrom = "MAN", DestinationName = "PFO", DepartureDate = flightDate, Cost = 150 },
+                new Flight { Id = 2, DepartingFrom = "MAN", DestinationName = "PFO", DepartureDate = flightDate, Cost = 100 }
             };
             var hotels = new List<Hotel>
             {
@@ -287,7 +287,7 @@ namespace HolidaySearchTests
             var hotelrepo = new JsonHotelRepository("JSONdata/hoteldata.json");
             var hotels = hotelrepo.GetAll();
 
-            var departingFrom = "MAN";
+            string[] departingFrom = { "MAN" };
             var flightDate = new DateTime(2023, 07, 01);
             var duration = 7;
 
@@ -298,6 +298,51 @@ namespace HolidaySearchTests
             //Assert
             Assert.Equal(2, matches[0].Item1.Id);
             Assert.Equal(9, matches[0].Item2.Id);
+        }
+
+        [Fact]
+        public void Customer2()
+        {
+            //Arrange
+            var flightrepo = new JsonFlightRepository("JSONdata/flightdata.json");
+            var flights = flightrepo.GetAll();
+
+            var hotelrepo = new JsonHotelRepository("JSONdata/hoteldata.json");
+            var hotels = hotelrepo.GetAll();
+
+            string[] departingFrom = { "LGW", "LTN" };
+            var flightDate = new DateTime(2023, 06, 15);
+            var duration = 10;
+
+            var service = new HolidayMatchingService();
+
+            //Act
+            var matches = service.Match(flights, hotels, departingFrom, flightDate, duration).ToList();
+            //Assert
+            Assert.Equal(6, matches[0].Item1.Id);
+            Assert.Equal(5, matches[0].Item2.Id);
+        }
+        [Fact]
+        public void Customer3()
+        {
+            //Arrange
+            var flightrepo = new JsonFlightRepository("JSONdata/flightdata.json");
+            var flights = flightrepo.GetAll();
+
+            var hotelrepo = new JsonHotelRepository("JSONdata/hoteldata.json");
+            var hotels = hotelrepo.GetAll();
+
+            string[] departingFrom = { "LGW", "LTN", "MAN" };
+            var flightDate = new DateTime(2022, 11, 10);
+            var duration = 14;
+
+            var service = new HolidayMatchingService();
+
+            //Act
+            var matches = service.Match(flights, hotels, departingFrom, flightDate, duration).ToList();
+            //Assert
+            Assert.Equal(7, matches[0].Item1.Id);
+            Assert.Equal(6, matches[0].Item2.Id);
         }
 
     }
