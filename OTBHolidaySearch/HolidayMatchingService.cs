@@ -18,7 +18,9 @@ namespace OTBHolidaySearch
             return from flight in flights
                    from hotel in hotels
                    where hotel.LocalAirports != null &&
-                         hotel.LocalAirports.Contains(flight.DestinationName)
+                         hotel.LocalAirports.Contains(flight.DestinationName) &&
+                         hotel.ArrivalDate != null &&
+                         hotel.ArrivalDate == flight.DepartureDate.Date
                    select (flight, hotel);
         }
 

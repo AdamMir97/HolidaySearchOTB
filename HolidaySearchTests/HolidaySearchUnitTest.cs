@@ -7,6 +7,7 @@ namespace HolidaySearchTests
 {
     public class HolidaySearchUnitTest
     {
+        //Tests to prove model works
         [Fact]
         public void DeserializeJSONToFlight()
         {
@@ -73,6 +74,7 @@ namespace HolidaySearchTests
             
         }
 
+        //Tests for proving JSON is loaded correctly
         [Fact]
         public void JsonFlightRepositoryReadsFile()
         {
@@ -93,6 +95,9 @@ namespace HolidaySearchTests
             Assert.All(hotels, f => Assert.NotNull(f.Id));
         }
 
+
+        //Tests for matching
+        //Basic matching
         [Fact]
         public void FlightDestinationMatchesWithHotelAirport()
         {
@@ -137,14 +142,55 @@ namespace HolidaySearchTests
             //Assert
             Assert.Empty(matches);
         }
-
+        //Matching with dates
+        [Fact]
         public void FlightDestinationMatchesWithHotelAirportAndDates()
         {
             //Arrange
+            var flightDate = new DateTime(2025, 09, 01);
+            var flights = new List<Flight>
+            {
+                new Flight { Id = 1, DestinationName = "PFO", DepartureDate = flightDate }
+            };
+            var hotels = new List<Hotel>
+            {
+                new Hotel { Name = "TestHotel1", LocalAirports = new[] {"PFO", "LCA"}, ArrivalDate = flightDate.AddDays(20) },
+                new Hotel { Name = "TestHotel2", LocalAirports = new[] { "LCA"}, ArrivalDate = flightDate },
+                new Hotel { Name = "TestHotel3", LocalAirports = new[] { "PFO"}, ArrivalDate = flightDate }
+            };
+
+            var service = new HolidayMatchingService();
+
             //Act
-            //Assert
+            var matches = service.Match(flights, hotels).ToList();
             //Assert that the departure date is the same as arrival date
+            Assert.Equal(1, matches[0].Item1.Id);
+            Assert.Equal("TestHotel3", matches[0].Item2.Name);
         }
+
+        [Fact]
+        public void FlightDestinationMatchesWithHotelAirportAndWrongDates_ReturnsEmpty()
+        {
+            //Arrange
+            var flightDate = new DateTime(2025, 09, 01);
+            var flights = new List<Flight>
+            {
+                new Flight { Id = 1, DestinationName = "PFO", DepartureDate = flightDate }
+            };
+            var hotels = new List<Hotel>
+            {
+                new Hotel { Name = "TestHotel1", LocalAirports = new[] {"PFO", "LCA"}, ArrivalDate = flightDate.AddDays(20) },
+            };
+
+            var service = new HolidayMatchingService();
+
+            //Act
+            var matches = service.Match(flights, hotels).ToList();
+            //Assert
+            Assert.Empty(matches);
+        }
+
+        
 
         public void SearchResultsAreOrderedByValue()
         {
