@@ -1,5 +1,6 @@
 using System.Text.Json;
 using OTBHolidaySearch.Models;
+using OTBHolidaySearch.Repositories;
 
 namespace HolidaySearchTests
 {
@@ -70,6 +71,27 @@ namespace HolidaySearchTests
             Assert.Contains("TFS", hotel.LocalAirports);
             
         }
+
+        [Fact]
+        public void JsonFlightRepositoryReadsFile()
+        {
+            var repo = new JsonFlightRepository("JSONdata/flightdata.json");
+            var flights = repo.GetAll();
+
+            Assert.NotEmpty(flights);
+            Assert.All(flights, f => Assert.NotNull(f.Id));
+        }
+
+        [Fact]
+        public void JsonHotelRepositoryReadsFile()
+        {
+            var repo = new JsonHotelRepository("JSONdata/hoteldata.json");
+            var hotels = repo.GetAll();
+
+            Assert.NotEmpty(hotels);
+            Assert.All(hotels, f => Assert.NotNull(f.Id));
+        }
+
         public void FlightDestinationMatchesWithHotelAirport()
         {
             //Arrange
