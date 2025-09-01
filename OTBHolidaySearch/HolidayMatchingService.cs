@@ -22,6 +22,8 @@ namespace OTBHolidaySearch
                          hotel.ArrivalDate != null &&
                          hotel.ArrivalDate == flight.DepartureDate.Date &&
                          hotel.LengthOfStay == duration
+                   let packageCost = flight.Cost + hotel.TotalCost
+                   orderby packageCost
                    select (flight, hotel);
         }
 

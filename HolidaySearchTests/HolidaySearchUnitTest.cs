@@ -202,7 +202,7 @@ namespace HolidaySearchTests
             };
             var hotels = new List<Hotel>
             {
-                new Hotel { Name = "TestHotel1", LocalAirports = new[] {"PFO", "LCA"}, ArrivalDate = flightDate.AddDays(20) },
+                new Hotel { Name = "TestHotel1", LocalAirports = new[] {"PFO", "LCA"}, ArrivalDate = flightDate.AddDays(20), LengthOfStay = 10 },
                 new Hotel { Name = "TestHotel2", LocalAirports = new[] { "PFO"}, ArrivalDate = flightDate, LengthOfStay = 7 },
                 new Hotel { Name = "TestHotel3", LocalAirports = new[] { "PFO"}, ArrivalDate = flightDate, LengthOfStay = 10  }
             };
@@ -239,11 +239,32 @@ namespace HolidaySearchTests
             Assert.Empty(matches);
         }
 
+        //order by price
+        [Fact]
         public void SearchResultsAreOrderedByValue()
         {
             //Arrange
+            int duration = 10;
+            var flightDate = new DateTime(2025, 09, 01);
+            var flights = new List<Flight>
+            {
+                new Flight { Id = 1, DestinationName = "PFO", DepartureDate = flightDate, Cost = 150 },
+                new Flight { Id = 2, DestinationName = "PFO", DepartureDate = flightDate, Cost = 100 }
+            };
+            var hotels = new List<Hotel>
+            {
+                new Hotel { Name = "TestHotel1", LocalAirports = new[] {"PFO", "LCA"}, ArrivalDate = flightDate, LengthOfStay = 10 , PricePerNight = 100 },
+                new Hotel { Name = "TestHotel2", LocalAirports = new[] { "PFO"}, ArrivalDate = flightDate, LengthOfStay = 10 , PricePerNight = 20},
+                new Hotel { Name = "TestHotel3", LocalAirports = new[] { "PFO"}, ArrivalDate = flightDate, LengthOfStay = 10 , PricePerNight = 10}
+            };
+
+            var service = new HolidayMatchingService();
+
             //Act
-            //Assert
+            var matches = service.Match(flights, hotels, duration).ToList();
+            //Assert that the correct package is chosen according to the duration and price
+            Assert.Equal(2, matches[0].Item1.Id);
+            Assert.Equal("TestHotel3", matches[0].Item2.Name);
         }
     }
 }
