@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{25B6B941-977C-4FE4-8D4B-29BA00D4487E}|OTBHolidaySearch\\OTBHolidaySearch.csproj|c:\\users\\adam\\source\\repos\\otbholidaysearch\\otbholidaysearch\\otbholidaysearch.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{25B6B941-977C-4FE4-8D4B-29BA00D4487E}|OTBHolidaySearch\\OTBHolidaySearch.csproj|solutionrelative:otbholidaysearch\\otbholidaysearch.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FEE5861-FCFF-4BF7-A029-38C5F9E331B1}|HolidaySearchTests\\HolidaySearchTests.csproj|c:\\users\\adam\\source\\repos\\otbholidaysearch\\holidaysearchtests\\holidaysearchunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FEE5861-FCFF-4BF7-A029-38C5F9E331B1}|HolidaySearchTests\\HolidaySearchTests.csproj|solutionrelative:holidaysearchtests\\holidaysearchunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25B6B941-977C-4FE4-8D4B-29BA00D4487E}|OTBHolidaySearch\\OTBHolidaySearch.csproj|c:\\users\\adam\\source\\repos\\otbholidaysearch\\otbholidaysearch\\jsondata\\flightdata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{25B6B941-977C-4FE4-8D4B-29BA00D4487E}|OTBHolidaySearch\\OTBHolidaySearch.csproj|solutionrelative:otbholidaysearch\\jsondata\\flightdata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25B6B941-977C-4FE4-8D4B-29BA00D4487E}|OTBHolidaySearch\\OTBHolidaySearch.csproj|c:\\users\\adam\\source\\repos\\otbholidaysearch\\otbholidaysearch\\jsondata\\hoteldata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{25B6B941-977C-4FE4-8D4B-29BA00D4487E}|OTBHolidaySearch\\OTBHolidaySearch.csproj|solutionrelative:otbholidaysearch\\jsondata\\hoteldata.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25B6B941-977C-4FE4-8D4B-29BA00D4487E}|OTBHolidaySearch\\OTBHolidaySearch.csproj|c:\\users\\adam\\source\\repos\\otbholidaysearch\\otbholidaysearch\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{25B6B941-977C-4FE4-8D4B-29BA00D4487E}|OTBHolidaySearch\\OTBHolidaySearch.csproj|solutionrelative:otbholidaysearch\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{25B6B941-977C-4FE4-8D4B-29BA00D4487E}|OTBHolidaySearch\\OTBHolidaySearch.csproj|c:\\users\\adam\\source\\repos\\otbholidaysearch\\otbholidaysearch\\otbholidaysearch.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{25B6B941-977C-4FE4-8D4B-29BA00D4487E}|OTBHolidaySearch\\OTBHolidaySearch.csproj|solutionrelative:otbholidaysearch\\otbholidaysearch.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "hoteldata.json",
+              "DocumentMoniker": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\OTBHolidaySearch\\JSONdata\\hoteldata.json",
+              "RelativeDocumentMoniker": "OTBHolidaySearch\\JSONdata\\hoteldata.json",
+              "ToolTip": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\OTBHolidaySearch\\JSONdata\\hoteldata.json",
+              "RelativeToolTip": "OTBHolidaySearch\\JSONdata\\hoteldata.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAG0AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-31T10:18:11.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "flightdata.json",
+              "DocumentMoniker": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\OTBHolidaySearch\\JSONdata\\flightdata.json",
+              "RelativeDocumentMoniker": "OTBHolidaySearch\\JSONdata\\flightdata.json",
+              "ToolTip": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\OTBHolidaySearch\\JSONdata\\flightdata.json",
+              "RelativeToolTip": "OTBHolidaySearch\\JSONdata\\flightdata.json",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-31T10:17:58.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OTBHolidaySearch",
+              "DocumentMoniker": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\OTBHolidaySearch\\OTBHolidaySearch.csproj",
+              "RelativeDocumentMoniker": "OTBHolidaySearch\\OTBHolidaySearch.csproj",
+              "ToolTip": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\OTBHolidaySearch\\OTBHolidaySearch.csproj",
+              "RelativeToolTip": "OTBHolidaySearch\\OTBHolidaySearch.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-31T10:16:39.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HolidaySearchUnitTest.cs",
+              "DocumentMoniker": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\HolidaySearchTests\\HolidaySearchUnitTest.cs",
+              "RelativeDocumentMoniker": "HolidaySearchTests\\HolidaySearchUnitTest.cs",
+              "ToolTip": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\HolidaySearchTests\\HolidaySearchUnitTest.cs",
+              "RelativeToolTip": "HolidaySearchTests\\HolidaySearchUnitTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-31T09:59:34.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OTBHolidaySearch",
+              "DocumentMoniker": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\OTBHolidaySearch\\OTBHolidaySearch.csproj",
+              "RelativeDocumentMoniker": "OTBHolidaySearch\\OTBHolidaySearch.csproj",
+              "ToolTip": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\OTBHolidaySearch\\OTBHolidaySearch.csproj",
+              "RelativeToolTip": "OTBHolidaySearch\\OTBHolidaySearch.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-31T09:38:49.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\OTBHolidaySearch\\Program.cs",
+              "RelativeDocumentMoniker": "OTBHolidaySearch\\Program.cs",
+              "ToolTip": "C:\\Users\\Adam\\source\\repos\\OTBHolidaySearch\\OTBHolidaySearch\\Program.cs",
+              "RelativeToolTip": "OTBHolidaySearch\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-31T09:34:39.049Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
