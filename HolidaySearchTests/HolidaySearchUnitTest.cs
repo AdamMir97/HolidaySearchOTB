@@ -1,4 +1,5 @@
 using System.Text.Json;
+using OTBHolidaySearch;
 using OTBHolidaySearch.Models;
 using OTBHolidaySearch.Repositories;
 
@@ -92,11 +93,49 @@ namespace HolidaySearchTests
             Assert.All(hotels, f => Assert.NotNull(f.Id));
         }
 
+        [Fact]
         public void FlightDestinationMatchesWithHotelAirport()
         {
-            //Arrange
+            //Arrange- use Cyprus for the sake of argument
+            var flights = new List<Flight>
+            {
+                new Flight { Id = 1, DestinationName = "PFO" }
+            };
+            var hotels = new List<Hotel>
+            {
+                new Hotel { Name = "TestHotel1", LocalAirports = new[] {"PFO", "LCA"} },
+                new Hotel { Name = "TestHotel2", LocalAirports = new[] { "LCA"} }
+            };
+
+            var service = new HolidayMatchingService();
+
             //Act
+            var matches = service.Match(flights, hotels).ToList();
             //Assert
+            Assert.Equal(1, matches[0].Item1.Id);
+            Assert.Equal("TestHotel1", matches[0].Item2.Name);
+        }
+
+        [Fact]
+        public void FlightDestinationNoMatchesWithHotelAirport_ReturnsEmpty()
+        {
+            //Arrange
+            var flights = new List<Flight>
+            {
+                new Flight { Id = 1, DestinationName = "AYT" }
+            };
+            var hotels = new List<Hotel>
+            {
+                new Hotel { Name = "TestHotel1", LocalAirports = new[] {"PFO", "LCA"} },
+                new Hotel { Name = "TestHotel2", LocalAirports = new[] { "LCA"} }
+            };
+
+            var service = new HolidayMatchingService();
+
+            //Act
+            var matches = service.Match(flights, hotels).ToList();
+            //Assert
+            Assert.Empty(matches);
         }
 
         public void FlightDestinationMatchesWithHotelAirportAndDates()
