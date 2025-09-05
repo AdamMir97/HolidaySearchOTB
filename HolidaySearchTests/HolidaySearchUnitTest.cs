@@ -7,6 +7,12 @@ namespace HolidaySearchTests
 {
     public class HolidaySearchUnitTest
     {
+        //Helper functions to create flights and hotels
+        private Flight CreateFlight(int id, string departingFrom, string destinationName, DateTime departureDate, decimal cost) =>
+            new Flight { Id = id, DepartingFrom = departingFrom, DestinationName = destinationName, DepartureDate = departureDate, Cost = cost };
+
+        private Hotel CreateHotel(string name, string[] localAirports, DateTime arrivalDate, int lengthOfStay, decimal pricePerNight) =>
+            new Hotel { Name = name, LocalAirports = localAirports, ArrivalDate = arrivalDate, LengthOfStay = lengthOfStay, PricePerNight = pricePerNight };
         //Tests to prove model works
         [Fact]
         public void DeserializeJSONToFlight()
@@ -274,6 +280,35 @@ namespace HolidaySearchTests
             //Assert that the correct package is chosen according to the duration and price
             Assert.Equal(2, matches[0].Item1.Id);
             Assert.Equal("TestHotel3", matches[0].Item2.Name);
+        }
+
+        [Fact]
+        public void SearchResultsAreOrderedByValueUsingHelperClasses()
+        {
+            //Arrange
+            int duration = 10;
+            var flightDate = new DateTime(2025, 09, 01);
+            string[] departingFrom = { "MAN" };
+            var flights = new List<Flight>
+            {
+                CreateFlight(1, "MAN", "PFO", flightDate, 150),
+                CreateFlight(2, "MAN", "PFO", flightDate, 100)
+            };
+            var hotels = new List<Hotel>
+            {
+                CreateHotel("TestHotel1", ["PFO", "LCA"], flightDate, 10, 100 ),
+                CreateHotel("TestHotel2", [ "PFO"], flightDate, 10, 20 ),
+                CreateHotel("TestHotel3", [ "PFO"], flightDate, 10, 10 )
+            };
+
+            var service = new HolidayMatchingService();
+
+            //Act
+            var matches = service.Match(flights, hotels, departingFrom, flightDate, duration).ToList();
+            //Assert that the correct package is chosen according to the duration and price
+            Assert.Equal(2, matches[0].Item1.Id);
+            Assert.Equal("TestHotel3", matches[0].Item2.Name);
+
         }
 
         //integration testing using given test cases
